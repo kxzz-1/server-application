@@ -33,6 +33,7 @@ RUN set -x && \
     php /usr/bin/composer.phar dump-autoload -n --optimize --apcu --classmap-authoritative
 
 RUN set -x && \
+    echo "@cattr:registry=https://git.amazingcat.net/api/v4/packages/npm/" > .npmrc && \
     yarn install --ignore-engines && \
     yarn prod && \
     rm -rf node_modules

@@ -28,7 +28,7 @@ COPY --chown=www:www . /app
 USER www:www
 
 RUN set -x && \
-    php /usr/bin/composer.phar install -n --no-dev --no-cache --no-ansi --no-autoloader && \
+    php /usr/bin/composer.phar update -n --no-dev --no-cache --no-ansi --no-autoloader --ignore-platform-reqs --with-all-dependencies --ignore-platform-reqs --no-scripts --no-interaction --prefer-dist --ignore-platform-reqs vermorag/laravel-prometheus-exporter && \
     php /usr/bin/composer.phar dump-autoload -n --optimize --apcu --classmap-authoritative
 
 RUN set -x && \

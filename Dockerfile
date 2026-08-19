@@ -32,11 +32,7 @@ RUN set -x && \
     php /usr/bin/composer.phar update -n --no-dev --no-cache --no-ansi --no-autoloader --ignore-platform-reqs --with-all-dependencies --ignore-platform-reqs --no-scripts --no-interaction --prefer-dist --ignore-platform-reqs vermorag/laravel-prometheus-exporter && \
     php /usr/bin/composer.phar dump-autoload -n --optimize --apcu --classmap-authoritative
 
-RUN set -x && \
-    echo "@cattr:registry=https://git.amazingcat.net/api/v4/packages/npm/" > .npmrc && \
-    yarn install --ignore-engines && \
-    yarn prod && \
-    rm -rf node_modules
+
     
 RUN set -x && \
     php artisan storage:link

@@ -11,7 +11,7 @@ ENV IMAGE_VERSION=5.0.0
 ENV APP_VERSION $APP_VERSION
 ENV SENTRY_DSN $SENTRY_DSN
 ENV APP_ENV $APP_ENV
-ENV YARN_ENABLE_GLOBAL_CACHE=true
+ENV YARN_ENABLE_GLOBAL_CACHE=false
 ENV REVERB_APP_KEY="cattr"
 ENV REVERB_HOST="127.0.0.1"
 ENV REVERB_SCHEME $REVERB_SCHEME
@@ -33,8 +33,8 @@ RUN set -x && \
     php /usr/bin/composer.phar dump-autoload -n --optimize --apcu --classmap-authoritative
 
 RUN set -x && \
-    yarn && \
-    yarn prod && \
+    npm install --legacy-peer-deps && \
+    npm run prod && \
     rm -rf node_modules
 
 RUN set -x && \

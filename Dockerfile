@@ -28,9 +28,7 @@ COPY --chown=www:www . /app
 USER www:www
 
 RUN set -x && \
-    php /usr/bin/composer.phar require -n --no-ansi --no-install --no-update --no-audit $BACKEND_MODULES && \
-    php /usr/bin/composer.phar update -n --no-autoloader --no-install --no-ansi $BACKEND_MODULES && \
-    php /usr/bin/composer.phar install -n --no-dev --no-cache --no-ansi --no-autoloader --no-dev && \
+    php /usr/bin/composer.phar install -n --no-dev --no-cache --no-ansi --no-autoloader && \
     php /usr/bin/composer.phar dump-autoload -n --optimize --apcu --classmap-authoritative
 
 RUN set -x && \

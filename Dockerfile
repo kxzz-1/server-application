@@ -33,10 +33,10 @@ RUN set -x && \
     php /usr/bin/composer.phar dump-autoload -n --optimize --apcu --classmap-authoritative
 
 RUN set -x && \
-    npm install --legacy-peer-deps && \
-    npm run prod && \
+    yarn install && \
+    yarn prod && \
     rm -rf node_modules
-
+    
 RUN set -x && \
     php artisan storage:link
 
